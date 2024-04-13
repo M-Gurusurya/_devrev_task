@@ -1,0 +1,23 @@
+const axios = require('axios');
+
+const endpoint = 'https://api.devrev.ai/artifacts.prepare';
+
+const payload = {
+    "file_name":'./demo.json'
+};
+
+const headers = {
+  "Authorization": 'eyJhbGciOiJSUzI1NiIsImlzcyI6Imh0dHBzOi8vYXV0aC10b2tlbi5kZXZyZXYuYWkvIiwia2lkIjoic3RzX2tpZF9yc2EiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiamFudXMiXSwiYXpwIjoiZG9uOmlkZW50aXR5OmR2cnYtdXMtMTpkZXZvLzF1b1hqTGZOVFQ6ZGV2dS8xIiwiZXhwIjoxNzQ0Mjg2NTAwLCJodHRwOi8vZGV2cmV2LmFpL2F1dGgwX3VpZCI6ImRvbjppZGVudGl0eTpkdnJ2LXVzLTE6ZGV2by9zdXBlcjphdXRoMF91c2VyL2xpbmtlZGlufDMzZlhLVkVTUHYiLCJodHRwOi8vZGV2cmV2LmFpL2F1dGgwX3VzZXJfaWQiOiJsaW5rZWRpbnwzM2ZYS1ZFU1B2IiwiaHR0cDovL2RldnJldi5haS9kZXZvX2RvbiI6ImRvbjppZGVudGl0eTpkdnJ2LXVzLTE6ZGV2by8xdW9YakxmTlRUIiwiaHR0cDovL2RldnJldi5haS9kZXZvaWQiOiJERVYtMXVvWGpMZk5UVCIsImh0dHA6Ly9kZXZyZXYuYWkvZGV2dWlkIjoiREVWVS0xIiwiaHR0cDovL2RldnJldi5haS9kaXNwbGF5bmFtZSI6Imd1cnVzdXJ5YW0yMDAzIiwiaHR0cDovL2RldnJldi5haS9lbWFpbCI6Imd1cnVzdXJ5YW0yMDAzQGdtYWlsLmNvbSIsImh0dHA6Ly9kZXZyZXYuYWkvZnVsbG5hbWUiOiJHdXJ1c3VyeWEgTSIsImh0dHA6Ly9kZXZyZXYuYWkvaXNfdmVyaWZpZWQiOnRydWUsImh0dHA6Ly9kZXZyZXYuYWkvdG9rZW50eXBlIjoidXJuOmRldnJldjpwYXJhbXM6b2F1dGg6dG9rZW4tdHlwZTpwYXQiLCJpYXQiOjE3MTI3NTA1MDAsImlzcyI6Imh0dHBzOi8vYXV0aC10b2tlbi5kZXZyZXYuYWkvIiwianRpIjoiZG9uOmlkZW50aXR5OmR2cnYtdXMtMTpkZXZvLzF1b1hqTGZOVFQ6dG9rZW4vVDNHYmluTEEiLCJvcmdfaWQiOiJvcmdfZmllT3BDTVRjYmJNTGtCeSIsInN1YiI6ImRvbjppZGVudGl0eTpkdnJ2LXVzLTE6ZGV2by8xdW9YakxmTlRUOmRldnUvMSJ9.zbBEiFM5i-kck0EGh43lpXXs5cSgIEmlS2jAHG_d2ZjtX9GJKs7MTvlxgN83_y320O5i-PvRZ98f2Ij08CAeGrVJ1FYm7PhMJD7Gp5PpPlD6o5fUAYK8mfcqL7hw9Kc2rzP9PFrx0xaq956Ncs1ZwWwxx9g1CJ3lroigTA4PX2Mw_LciYP2w9ePvB9BMTKghr5_e3U8tweHEvUHFZ4fATvV5_d2LC8jHgh-Znz9-E2G7nvvgCpZWvq8NZscoFxwOf03Lk9HJG1N2o4n2VYtWGMAiXKs4zlSU3GmTSRLku2xOUECETMoXWWZ23hXhipLyI_mcIOWxsSSk7prEKweSYA',
+  "Content-Type": "application/json"
+};
+
+axios.post(endpoint, payload , { headers })
+  .then(response => {
+    console.log('Artifact located successfully!');
+    console.log('URL:', response.data);
+    console.log('id:', response.data.id);
+    console.log('form data:', response.data.form_data);
+  })
+  .catch(error => {
+    console.error('Failed to locate artifact:', error);
+  });
